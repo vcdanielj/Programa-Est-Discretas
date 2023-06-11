@@ -70,7 +70,44 @@ def ejercicio_4():
     ejercicios_4_5()
 
 def ejercicio_5():
-    pass
+    print("""¿De Cúantas Formas es Posible Distribuir 10 Monedas Idénticas entre 5 Niños?
+Sin Restricciones:""")
+     
+    r = 5
+    n = 10 + r - 1
+    r = 10
+
+    nCr = factorial(n)/(factorial(r)*factorial(n-r))
+
+    print(f"Existen un total de {nCr} formas posibles de distribuir 10 monedas idénticas entre 5 niños cuando no hay restricciones")
+
+    x = input()
+
+    print("Cuando cada Niño Tiene Mínimo una Moneda:")
+     
+    r = 5
+    n = 5 + r - 1
+    r = 5
+
+    nCr = factorial(n)/(factorial(r)*factorial(n-r))
+
+    print(f"Existen un total de {nCr} formas posibles de distribuir 10 monedas idénticas entre 5 niños cuando cada niño tiene mínimo una moneda")
+
+    x = input()
+
+    print("Cuando el Niño Mayor Recibe al Menos 2 Monedas:")
+     
+    r = 5
+    n = 8 + r - 1
+    r = 8
+
+    nCr = factorial(n)/(factorial(r)*factorial(n-r))
+
+    print(f"Existen un total de {nCr} formas posibles de distribuir 10 monedas idénticas entre 5 niños cuando el Niño Mayor Recibe al Menos 2 Monedas")
+    
+    x = input()
+
+    ejercicios_4_5()
 
 def ejercicios_4_5():
     #Menu para Ejercicios 4 y 5
@@ -80,7 +117,7 @@ def ejercicios_4_5():
     ¿Cuantos Resultados Tienen Exactamente 3 Caras?
     ¿Cuantos Resultados Tienen a lo Sumo 3 Caras?
 
-[2] Hallar las Distribuciones en las que se Reparten 10 Monedas Idénticas entre 3 Niños
+[2] Hallar las Distribuciones en las que se Reparten 10 Monedas Idénticas entre 5 Niños
     Si no hay Restricciones
     Si cada Niño Recibe como Mínimo una Moneda
     Si el Niño Mayor Recibe como Mínimo dos Monedas
