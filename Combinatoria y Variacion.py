@@ -31,7 +31,8 @@ def menu_inicial():
             ejercicio_3()
         case 4:
             ejercicios_4_5()
-
+        case 5:
+            quit()
 
 #FUNCIONES RESOLUCIÓN EJERCICIOS
 
@@ -67,12 +68,12 @@ def ejercicios_4_5():
 """))   
         if opc not in [1,2,3]:
             print("No se ha seleccionado una opción válida")
-            menu_inicial()
+            ejercicios_4_5()
             return
 
     except Exception:
         print("No se ha seleccionado una opción válida")
-        menu_inicial()
+        ejercicios_4_5()
         return
     
     #Ejecución Opciones del Menú
@@ -84,3 +85,5 @@ def ejercicios_4_5():
             ejercicio_5()
         case 3:
             menu_inicial()
+
+menu_inicial()
