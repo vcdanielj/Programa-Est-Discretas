@@ -1,27 +1,26 @@
 #ESTRUCTURAS DISCRETAS I
 
 def menu_inicial():
-
+    # Captura de la opcion
     try:
         opc = int(input("""
-[1] Calcular las Combinaciones k de n elementos  
+[1] Calcular las Combinaciones n de r elementos  
 [2] Hallar Número de Disposiciones de Letras en un Texto
 [3] Calcular Combinaciones de N Objetos 
 [4] Lanzamiento de Monedas 
 [5] Salir
-"""))   
+>>> """))   
         if opc not in [1,2,3,4,5]:
-            print("No se ha seleccionado una opción válida")
+            print(">>> No se ha seleccionado una opción válida")
             menu_inicial()
             return
 
     except Exception:
-        print("No se ha seleccionado una opción válida")
+        print(">>> No se ha seleccionado una opción válida")
         menu_inicial()
         return
     
     #Ejecución Opciones del Menú
-
     match opc:
         case 1:
             ejercicio_1()
@@ -32,18 +31,61 @@ def menu_inicial():
         case 4:
             ejercicios_4_5()
         case 5:
-            quit()
+            pass
 
-#FUNCIONES RESOLUCIÓN EJERCICIOS
+""" Resolucion de ejercicios """
 
 def ejercicio_1():
-    pass
+    # Calcular las combinaciones de n en r elementos
+    try:
+        print(">>> Ingrese los valores a trabajar (cumpliendo la condición 0 <= r <= n)...")
+        n = int(input(">>> Ingrese el valor de n: "))
+        r = int(input(">>> Ingrese el valor de r: "))
+        if (0 <= r  and  r <= n):
+            comb = factorial(n) / (factorial(n-r) * factorial(r))
+            print(f">>> La combinatoria de {r} de {n} elementos es de {comb}!")
+            menu_inicial()
+        else:
+            print(">>> No ha ingresado correctamente los valores...")
+            ejercicio_1()
+    except:
+        print(">>> Los valores de 'r' y 'n' tienen que ser numeros enteros...")
 
 def ejercicio_2():
-    pass
+  texto = input(">>> Ingrese una palabra: ")
+  if not " " in texto:
+    texto = texto.upper()
+    texto = "".join(c for c in texto if c.isalpha())
+    frecuencias = {}
+    for letra in texto:
+        if letra in frecuencias:
+            frecuencias[letra] += 1
+        else:
+            frecuencias[letra] = 1
+    n = len(texto)
+    n_factorial = factorial(n)
+    denominador = 1
+    for valor in frecuencias.values():
+        denominador *= factorial(valor)
+    print(f">>> El valor de las disposiciones de las letras en {texto} es de {n_factorial // denominador}...")
+    menu_inicial()
+  else:
+      print(">>> Solo puede ingresar una palabra...")
+      menu_inicial()
 
 def ejercicio_3():
-    pass
+    try:
+        n = int(input("Ingrese el valor de n: "))
+        r = int(input("Ingrese el valor de r: "))
+        # Función que calcula el número de combinaciones con repetición
+        nr_factorial = factorial(n+r-1)
+        r_factorial = factorial(r)
+        n_factorial = factorial(n-1)
+        print(f">>> El valor de la combinacion con repeticion de n = {n} y r = {r} es {nr_factorial // (r_factorial * n_factorial)}...")
+        menu_inicial()
+    except:
+        print(">>> Ingrese valores enteros...")
+        menu_inicial()
 
 def ejercicio_4():
     print("""Una Moneda es Lanzada 10 veces
@@ -109,8 +151,8 @@ Sin Restricciones:""")
 
     ejercicios_4_5()
 
+#Menu para Ejercicios 4 y 5
 def ejercicios_4_5():
-    #Menu para Ejercicios 4 y 5
     try:
         opc = int(input("""
 [1] Una Moneda es Lanzada 10 veces
@@ -147,8 +189,7 @@ def ejercicios_4_5():
 def factorial(n):
     fact = 1
     for i in range(1, n+1):
-        fact *= i
-    
+        fact *= i    
     return fact
 
 
